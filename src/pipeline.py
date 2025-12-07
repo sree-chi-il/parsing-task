@@ -17,6 +17,8 @@ if tesseract_path and os.path.exists(tesseract_path):
 else:
     print(f"Warning: Tesseract not found at {tesseract_path}. Relying on system PATH.")
 
+#
+
 # repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # tesseract_path = os.path.join(repo_root, "tesseract", "tesseract.exe")
 # if os.path.exists(tesseract_path):
