@@ -7,6 +7,23 @@ import re
 from pytesseract import Output
 from datetime import datetime
 
+load_dotenv('.env.local')
+
+
+# Configure Tesseract path from environment variable
+tesseract_path = os.getenv("TESSERACT_PATH")
+if tesseract_path and os.path.exists(tesseract_path):
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
+else:
+    print(f"Warning: Tesseract not found at {tesseract_path}. Relying on system PATH.")
+
+# repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# tesseract_path = os.path.join(repo_root, "tesseract", "tesseract.exe")
+# if os.path.exists(tesseract_path):
+#     pytesseract.pytesseract.tesseract_cmd = tesseract_path
+# else:
+#     print(f"Warning: Local Tesseract not found at {tesseract_path}. Relying on system PATH.")
+
 # Regex patterns
 ORDINANCE_RE = re.compile(r"ORDINANCE\s+NO\.?\s*(\d+)", re.IGNORECASE)
 SECTION_RE = re.compile(r"SECTION\s+(\d+)[\.:]?", re.IGNORECASE)
