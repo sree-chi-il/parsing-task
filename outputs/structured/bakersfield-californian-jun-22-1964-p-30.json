@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "source_file": "bakersfield-californian-jun-22-1964-p-30_clean.png",
+    "publication_name": "bakersfield-californian",
+    "issue_date": "1964-06-22",
+    "page_number": "30",
+    "processed_date": "2025-12-18T20:27:07.461436Z",
+    "source_path": "C:\\Users\\sreec\\Research\\Housing Economics Research\\parsing-task\\work\\bakersfield-californian-jun-22-1964-p-30_clean.png"
+  },
+  "full_transcription": "auenouenrs ORD, No. 2696 DATED Jun ©) ORD. No. @-656,DA7ED JUNE 8, 1964,\n\n.\n\n;",
+  "layout_structure": [
+    {
+      "type": "text_block",
+      "bbox": [
+        5438,
+        54,
+        298,
+        58
+      ],
+      "area": 17284,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        2264,
+        244,
+        298,
+        58
+      ],
+      "area": 17284,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "graphical_asset",
+      "bbox": [
+        20,
+        314,
+        7644,
+        11110
+      ],
+      "area": 84924840,
+      "text": "[GRAPHICAL_ASSET]"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        98,
+        628,
+        1044,
+        166
+      ],
+      "area": 173304,
+      "ocr_words": [
+        {
+          "text": "auenouenrs",
+          "bbox": [
+            152,
+            26,
+            260,
+            32
+          ],
+          "conf": 13.0
+        },
+        {
+          "text": "ORD,",
+          "bbox": [
+            216,
+            50,
+            14,
+            6
+          ],
+          "conf": 75.0
+        },
+        {
+          "text": "No.",
+          "bbox": [
+            310,
+            50,
+            28,
+            36
+          ],
+          "conf": 87.0
+        },
+        {
+          "text": "2696",
+          "bbox": [
+            422,
+            48,
+            86,
+            38
+          ],
+          "conf": 46.0
+        },
+        {
+          "text": "DATED",
+          "bbox": [
+            568,
+            78,
+            16,
+            10
+          ],
+          "conf": 94.0
+        },
+        {
+          "text": "Jun",
+          "bbox": [
+            670,
+            80,
+            42,
+            16
+          ],
+          "conf": 78.0
+        },
+        {
+          "text": "©)",
+          "bbox": [
+            146,
+            74,
+            46,
+            64
+          ],
+          "conf": 52.0
+        },
+        {
+          "text": "ORD.",
+          "bbox": [
+            214,
+            78,
+            84,
+            26
+          ],
+          "conf": 80.0
+        },
+        {
+          "text": "No.",
+          "bbox": [
+            316,
+            78,
+            50,
+            26
+          ],
+          "conf": 66.0
+        },
+        {
+          "text": "@-656,DA7ED",
+          "bbox": [
+            388,
+            78,
+            246,
+            38
+          ],
+          "conf": 32.0
+        },
+        {
+          "text": "JUNE",
+          "bbox": [
+            650,
+            80,
+            88,
+            28
+          ],
+          "conf": 64.0
+        },
+        {
+          "text": "8,",
+          "bbox": [
+            760,
+            80,
+            30,
+            32
+          ],
+          "conf": 63.0
+        },
+        {
+          "text": "1964,",
+          "bbox": [
+            806,
+            80,
+            90,
+            28
+          ],
+          "conf": 87.0
+        }
+      ],
+      "text": "auenouenrs ORD, No. 2696 DATED Jun ©) ORD. No. @-656,DA7ED JUNE 8, 1964,"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1160,
+        890,
+        298,
+        74
+      ],
+      "area": 22052,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        356,
+        11194,
+        306,
+        70
+      ],
+      "area": 21420,
+      "ocr_words": [
+        {
+          "text": ".",
+          "bbox": [
+            146,
+            26,
+            12,
+            16
+          ],
+          "conf": 12.0
+        }
+      ],
+      "text": "."
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1362,
+        11214,
+        308,
+        74
+      ],
+      "area": 22792,
+      "ocr_words": [
+        {
+          "text": ";",
+          "bbox": [
+            146,
+            26,
+            14,
+            20
+          ],
+          "conf": 30.0
+        }
+      ],
+      "text": ";"
+    }
+  ],
+  "ordinance_summary": {
+    "ordinance_ids": [],
+    "sections": [],
+    "zoning_map_refs": [],
+    "zoning_labels": [],
+    "penalties_mentioned": false,
+    "topics": []
+  }
+}

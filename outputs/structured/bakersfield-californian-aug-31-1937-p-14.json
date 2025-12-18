@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "source_file": "bakersfield-californian-aug-31-1937-p-14_clean.png",
+    "publication_name": "bakersfield-californian",
+    "issue_date": "1937-08-31",
+    "page_number": "14",
+    "processed_date": "2025-12-18T20:25:57.251549Z",
+    "source_path": "C:\\Users\\sreec\\Research\\Housing Economics Research\\parsing-task\\work\\bakersfield-californian-aug-31-1937-p-14_clean.png"
+  },
+  "full_transcription": "‘\n\n‘",
+  "layout_structure": [
+    {
+      "type": "text_block",
+      "bbox": [
+        4140,
+        0,
+        296,
+        52
+      ],
+      "area": 15392,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4598,
+        0,
+        438,
+        54
+      ],
+      "area": 23652,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        5692,
+        0,
+        298,
+        40
+      ],
+      "area": 11920,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "graphical_asset",
+      "bbox": [
+        0,
+        18,
+        7294,
+        9614
+      ],
+      "area": 70124516,
+      "text": "[GRAPHICAL_ASSET]"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        3112,
+        18,
+        526,
+        108
+      ],
+      "area": 56808,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1606,
+        96,
+        296,
+        58
+      ],
+      "area": 17168,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4748,
+        152,
+        296,
+        56
+      ],
+      "area": 16576,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        7088,
+        158,
+        206,
+        58
+      ],
+      "area": 11948,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1222,
+        162,
+        304,
+        70
+      ],
+      "area": 21280,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        718,
+        9510,
+        302,
+        70
+      ],
+      "area": 21140,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        180,
+        9524,
+        314,
+        66
+      ],
+      "area": 20724,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1958,
+        9542,
+        304,
+        74
+      ],
+      "area": 22496,
+      "ocr_words": [
+        {
+          "text": "‘",
+          "bbox": [
+            146,
+            26,
+            10,
+            20
+          ],
+          "conf": 72.0
+        }
+      ],
+      "text": "‘"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4110,
+        9544,
+        302,
+        66
+      ],
+      "area": 19932,
+      "ocr_words": [
+        {
+          "text": "‘",
+          "bbox": [
+            146,
+            26,
+            8,
+            12
+          ],
+          "conf": 62.0
+        }
+      ],
+      "text": "‘"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4474,
+        9578,
+        298,
+        62
+      ],
+      "area": 18476,
+      "ocr_words": [],
+      "text": ""
+    }
+  ],
+  "ordinance_summary": {
+    "ordinance_ids": [],
+    "sections": [],
+    "zoning_map_refs": [],
+    "zoning_labels": [],
+    "penalties_mentioned": false,
+    "topics": []
+  }
+}

@@ -12,7 +12,7 @@ load_dotenv('.env.local')
 
 
 # Configure Tesseract path from environment variable
-tesseract_path = os.getenv("TESSERACT_PATH")
+tesseract_path = "C:\\Users\\sreec\\Research\\Housing Economics Research\\tesseract.exe"
 if tesseract_path and os.path.exists(tesseract_path):
     pytesseract.pytesseract.tesseract_cmd = tesseract_path
 else:
@@ -45,14 +45,17 @@ def analyze_layout(image_path):
         2. Merge lines into larger blocks
     Zones >20% of the page area are graphical assets (maps, photos).
     """
+    print("Step 1 started")
+
     img = cv2.imread(image_path)
     if img is None:
         raise FileNotFoundError(image_path)
 
     H, W = img.shape[:2]
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray_small = cv2.resize(gray, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
     _, thresh = cv2.threshold(
-        gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
+        gray_small, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU
     )
 
     # Stage 1 – join text lines
@@ -70,6 +73,12 @@ def analyze_layout(image_path):
     blocks = []
     for c in contours:
         x, y, w, h = cv2.boundingRect(c)
+        # scale back to original image coordinates
+        scale = 2.0
+        x = int(x * scale)
+        y = int(y * scale)
+        w = int(w * scale)
+        h = int(h * scale)
         area = w * h
         if area < 8000:
             continue
@@ -83,6 +92,9 @@ def analyze_layout(image_path):
         })
 
     blocks.sort(key=lambda b: (b["bbox"][1], b["bbox"][0]))
+
+    print("Step 1 complete")
+
     return blocks
 
 
@@ -92,73 +104,101 @@ def analyze_layout(image_path):
 
 def extract_text(image_path, blocks):
     """
-    OCR pipeline:
-    - text_block → word-level OCR with bounding boxes & confidence
-    - graphical_asset → sparse OCR for map captions
+    Single-pass OCR:
+    - Run Tesseract ONCE on full image
+    - Assign OCR words to layout blocks by bounding box overlap
     """
+
+    print("Step 2 started (Single-pass OCR)")
+
     img = cv2.imread(image_path)
-    enriched = []
+    if img is None:
+        raise FileNotFoundError(image_path)
+
+    H, W = img.shape[:2]
+    scale = 0.5
+    img_ocr = cv2.resize(img, None, fx=scale, fy=scale, interpolation=cv2.INTER_AREA)
+
+
+    # ONE Tesseract call for entire page
+    data = pytesseract.image_to_data(
+        img_ocr,
+        output_type=Output.DICT,
+        config="--psm 4"  # Multi-column layout (best for newspapers)
+    )
+
+    # Build word list once
+    all_words = []
+    for i in range(len(data["text"])):
+        text = data["text"][i].strip()
+        if not text:
+            continue
+
+        all_words.append({
+            "text": text,
+            "x": int(data["left"][i] / scale),
+            "y": int(data["top"][i] / scale),
+            "w": int(data["width"][i] / scale),
+            "h": int(data["height"][i] / scale),
+            "conf": float(data["conf"][i]) if data["conf"][i] != "-1" else -1.0
+        })
+
+    enriched_blocks = []
     full_text_parts = []
 
+    # Assign words → blocks
     for blk in blocks:
-        x, y, w, h = blk["bbox"]
-        roi = img[y:y+h, x:x+w]
+        bx, by, bw, bh = blk["bbox"]
+        bx2, by2 = bx + bw, by + bh
         entry = dict(blk)
 
+        block_words = []
+        block_texts = []
+
         if blk["type"] == "text_block":
-            data = pytesseract.image_to_data(
-                roi, output_type=Output.DICT, config="--psm 6"
-            )
+            for w in all_words:
+                wx, wy = w["x"], w["y"]
+                wx2, wy2 = wx + w["w"], wy + w["h"]
 
-            words = []
-            texts = []
+                # Check if word center is inside the block
+                cx = (wx + wx2) // 2
+                cy = (wy + wy2) // 2
 
-            for i, t in enumerate(data["text"]):
-                t = t.strip()
-                if not t:
-                    continue
+                if bx <= cx <= bx2 and by <= cy <= by2:
+                    block_words.append({
+                        "text": w["text"],
+                        "bbox": [w["x"] - bx, w["y"] - by, w["w"], w["h"]],
+                        "conf": w["conf"]
+                    })
+                    block_texts.append(w["text"])
 
-                words.append({
-                    "text": t,
-                    "bbox": [
-                        int(data["left"][i]),
-                        int(data["top"][i]),
-                        int(data["width"][i]),
-                        int(data["height"][i])
-                    ],
-                    "conf": float(data["conf"][i])
-                    if data["conf"][i] != "-1" else -1.0
-                })
-                texts.append(t)
+            entry["ocr_words"] = block_words
+            entry["text"] = " ".join(block_texts)
 
-            entry["ocr_words"] = words
-            entry["text"] = " ".join(texts)
-
-            if texts:
+            if block_texts:
                 full_text_parts.append(entry["text"])
 
         else:
-            # Sparse OCR for map graphics / illustrations
-            sparse = pytesseract.image_to_string(
-                roi, config="--psm 11"
-            ).strip()
-
-            entry["description_ocr"] = sparse
+            # Graphical assets: DO NOT re-OCR
             entry["text"] = "[GRAPHICAL_ASSET]"
 
-            if sparse:
-                full_text_parts.append(sparse)
+        enriched_blocks.append(entry)
 
-        enriched.append(entry)
+    print("Step 2 complete")
 
-    return enriched, "\n\n".join(full_text_parts)
+    return enriched_blocks, "\n\n".join(full_text_parts)
 
 ################################################################################
 # 3. Semantic Extraction
 ################################################################################
 
 def parse_ordinance_semantics(full_text):
+
+    print("Step 3 started")
+
     upper = full_text.upper()
+
+    print("Step 3 complete")
 
     return {
         "ordinance_ids": ORDINANCE_RE.findall(upper),
@@ -182,6 +222,9 @@ def parse_ordinance_semantics(full_text):
 ################################################################################
 
 def extract_metadata_from_filename(path):
+
+    print("Step 4 started")
+
     base = os.path.basename(path)
     name = os.path.splitext(base)[0]
 
@@ -216,6 +259,8 @@ def extract_metadata_from_filename(path):
     if pub:
         meta["publication_name"] = pub.group(1)
 
+    print("Step 4 complete")
+    
     return meta
 
 
@@ -224,6 +269,8 @@ def extract_metadata_from_filename(path):
 ################################################################################
 
 def run_pipeline(scan_path, out_json, out_md):
+    print("Step 5 started")
+
     print(f"[Pipeline] Running on {scan_path}")
 
     # Extract metadata
@@ -263,7 +310,9 @@ def run_pipeline(scan_path, out_json, out_md):
         r.write(f"**Penalties Mentioned:** {semantics['penalties_mentioned']}\n\n")
         r.write("## Transcript Preview (first 2000 chars)\n\n")
         r.write(full_text[:2000] + "\n")
-
+    
+    print("Step 5 complete")
+    
     print(f"[Pipeline] Wrote {out_json} and {out_md}")
 
 

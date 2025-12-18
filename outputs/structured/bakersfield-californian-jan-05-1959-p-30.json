@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "source_file": "bakersfield-californian-jan-05-1959-p-30_clean.png",
+    "publication_name": "bakersfield-californian",
+    "issue_date": "1959-01-05",
+    "page_number": "30",
+    "processed_date": "2025-12-18T20:26:23.630574Z",
+    "source_path": "C:\\Users\\sreec\\Research\\Housing Economics Research\\parsing-task\\work\\bakersfield-californian-jan-05-1959-p-30_clean.png"
+  },
+  "full_transcription": "",
+  "layout_structure": [
+    {
+      "type": "text_block",
+      "bbox": [
+        0,
+        0,
+        4908,
+        144
+      ],
+      "area": 706752,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        7250,
+        0,
+        278,
+        34
+      ],
+      "area": 9452,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4322,
+        156,
+        302,
+        60
+      ],
+      "area": 18120,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        2386,
+        226,
+        298,
+        60
+      ],
+      "area": 17880,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "graphical_asset",
+      "bbox": [
+        0,
+        332,
+        7528,
+        10456
+      ],
+      "area": 78712768,
+      "text": "[GRAPHICAL_ASSET]"
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4162,
+        10838,
+        484,
+        132
+      ],
+      "area": 63888,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        7100,
+        10862,
+        428,
+        142
+      ],
+      "area": 60776,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        1454,
+        10876,
+        586,
+        168
+      ],
+      "area": 98448,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        156,
+        10880,
+        470,
+        178
+      ],
+      "area": 83660,
+      "ocr_words": [],
+      "text": ""
+    },
+    {
+      "type": "text_block",
+      "bbox": [
+        4266,
+        11008,
+        302,
+        62
+      ],
+      "area": 18724,
+      "ocr_words": [],
+      "text": ""
+    }
+  ],
+  "ordinance_summary": {
+    "ordinance_ids": [],
+    "sections": [],
+    "zoning_map_refs": [],
+    "zoning_labels": [],
+    "penalties_mentioned": false,
+    "topics": []
+  }
+}
