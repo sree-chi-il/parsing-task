@@ -10,6 +10,6 @@
 
 ## Transcript Preview (first 2000 chars)
 
-‘
+\
 
-‘
+A

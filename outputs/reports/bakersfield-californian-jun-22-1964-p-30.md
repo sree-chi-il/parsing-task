@@ -4,14 +4,14 @@
 
 **Sections:** []
 
-**Zoning Codes:** []
+**Zoning Codes:** ['G8']
 
 **Penalties Mentioned:** False
 
 ## Transcript Preview (first 2000 chars)
 
-auenouenrs ORD, No. 2696 DATED Jun ©) ORD. No. @-656,DA7ED JUNE 8, 1964,
+AMENDMENTS ao ENTS... SPT Ce oid ORD. No. G-€G8 DATED JUNE 8, 1544,
 
-.
+’
 
-;
+,

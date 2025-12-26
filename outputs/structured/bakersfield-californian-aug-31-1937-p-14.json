@@ -4,10 +4,10 @@
     "publication_name": "bakersfield-californian",
     "issue_date": "1937-08-31",
     "page_number": "14",
-    "processed_date": "2025-12-18T20:25:57.251549Z",
+    "processed_date": "2025-12-24T04:33:12.986155Z",
     "source_path": "C:\\Users\\sreec\\Research\\Housing Economics Research\\parsing-task\\work\\bakersfield-californian-aug-31-1937-p-14_clean.png"
   },
-  "full_transcription": "‘\n\n‘",
+  "full_transcription": "\\\n\nA",
   "layout_structure": [
     {
       "type": "text_block",
@@ -151,17 +151,17 @@
       "area": 22496,
       "ocr_words": [
         {
-          "text": "‘",
+          "text": "\\",
           "bbox": [
             146,
             26,
-            10,
-            20
+            11,
+            19
           ],
-          "conf": 72.0
+          "conf": 33.0
         }
       ],
-      "text": "‘"
+      "text": "\\"
     },
     {
       "type": "text_block",
@@ -174,17 +174,17 @@
       "area": 19932,
       "ocr_words": [
         {
-          "text": "‘",
+          "text": "A",
           "bbox": [
             146,
             26,
-            8,
-            12
+            10,
+            14
           ],
-          "conf": 62.0
+          "conf": 45.0
         }
       ],
-      "text": "‘"
+      "text": "A"
     },
     {
       "type": "text_block",

@@ -115,17 +115,34 @@ def extract_text(image_path, blocks):
     if img is None:
         raise FileNotFoundError(image_path)
 
-    H, W = img.shape[:2]
-    scale = 0.5
-    img_ocr = cv2.resize(img, None, fx=scale, fy=scale, interpolation=cv2.INTER_AREA)
+    # 🚨 DO NOT RESIZE — full resolution is CRITICAL
+    img_ocr = img
+
+    config = (
+        "--oem 1 "                     # LSTM only (BEST)
+        "--psm 4 "                     # Fully automatic layout
+        "-c preserve_interword_spaces=1 "
+    )
+
+
+    # Resize for faster OCR (may reduce accuracy)
+    # img = cv2.imread(image_path)
+    # if img is None:
+    #     raise FileNotFoundError(image_path)
+
+    # H, W = img.shape[:2]
+    # scale = 0.5
+    # img_ocr = cv2.resize(img, None, fx=scale, fy=scale, interpolation=cv2.INTER_AREA)
 
 
     # ONE Tesseract call for entire page
     data = pytesseract.image_to_data(
         img_ocr,
         output_type=Output.DICT,
-        config="--psm 4"  # Multi-column layout (best for newspapers)
+        # config="--psm 4"  # old Multi-column layout (best for newspapers)
+        config=config
     )
+
 
     # Build word list once
     all_words = []
@@ -136,12 +153,21 @@ def extract_text(image_path, blocks):
 
         all_words.append({
             "text": text,
-            "x": int(data["left"][i] / scale),
-            "y": int(data["top"][i] / scale),
-            "w": int(data["width"][i] / scale),
-            "h": int(data["height"][i] / scale),
+            "x": int(data["left"][i]),
+            "y": int(data["top"][i]),
+            "w": int(data["width"][i]),
+            "h": int(data["height"][i]),
             "conf": float(data["conf"][i]) if data["conf"][i] != "-1" else -1.0
         })
+
+        # all_words.append({
+        #     "text": text,
+        #     "x": int(data["left"][i] / scale),
+        #     "y": int(data["top"][i] / scale),
+        #     "w": int(data["width"][i] / scale),
+        #     "h": int(data["height"][i] / scale),
+        #     "conf": float(data["conf"][i]) if data["conf"][i] != "-1" else -1.0
+        # })
 
     enriched_blocks = []
     full_text_parts = []
